@@ -32,8 +32,6 @@ git clone https://github.com/luciangreen/vetusiapl2webpl ../vetusiapl2webpl
 
 Needs Node 20 and SWI-Prolog (`swipl`).
 
-vetusiapl2webpl needs the fixes in [luciangreen/vetusiapl2webpl#19](https://github.com/luciangreen/vetusiapl2webpl/pull/19) (raw HTML on form pages, the step before the first prompt, typed fields as strings); until it is merged, check out its `fix-web-html-and-inputs` branch.
-
 ## Tests
 
 ```sh
