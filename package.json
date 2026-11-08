@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --test test/*.test.js",
     "check-site": "node scripts/check-site.mjs",
-    "check-funnel": "node scripts/check-funnel.mjs"
+    "check-funnel": "node scripts/check-funnel.mjs",
+    "ios": "node io/make-ios.mjs"
   },
   "license": "BSD-3-Clause"
 }
