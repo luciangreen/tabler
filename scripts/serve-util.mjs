@@ -25,7 +25,9 @@ export function tables(html) {
 export function form(html) {
   const f = /<form([^>]*)>([\s\S]*?)<\/form>/.exec(html);
   if (!f) return null;
-  const attr = (s, name) => (new RegExp(`${name}="([^"]*)"`).exec(s) ?? new RegExp(`${name}='([^']*)'`).exec(s) ?? [])[1];
+  // attribute values decoded as a browser does (hidden fields hold quoted terms like "Ann")
+  const decode = (v) => v?.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  const attr = (s, name) => decode((new RegExp(`\\b${name}="([^"]*)"`).exec(s) ?? new RegExp(`\\b${name}='([^']*)'`).exec(s) ?? [])[1]);
   const inputs = [...f[2].matchAll(/<(input|select)\b([^>]*)>/g)].map((m) => ({ tag: m[1], type: attr(m[2], 'type') ?? (m[1] === 'select' ? 'select' : 'text'), name: attr(m[2], 'name'), value: attr(m[2], 'value') ?? '' })).filter((i) => i.name);
   return { action: attr(f[1], 'action') ?? '', method: (attr(f[1], 'method') ?? 'get').toLowerCase(), inputs };
 }
