@@ -72,6 +72,8 @@ test('the funnel as a terminal program, in the patterns vetusiapl2webpl supports
   assert.throws(() => terminalProgram({ ...f, landing: { ...f.landing, fields: [{ name: 'Password' }] } }), /password/);
   assert.throws(() => terminalProgram({ ...f, landing: { ...f.landing, fields: [] } }), /at least one field/);
   const noLink = terminalProgram({ ...f, paymentLink: '' });
+  assert.match(p, /;   Choice = "2"\n    ->  funnel_record\(declined, Email\)/);
+  assert.match(p, /;   writeln\('Please choose 1 or 2\.'\)\n    \)\./);
   assert.ok(!/href/.test(noLink) && /<p>Your first lesson is on its way\. Complete your purchase here:<\/p>'\)\n    ;/.test(noLink));
   assert.deepEqual(previewPages(f).map((x) => x.step), ['landing', 'offer', 'thanks', 'declined']);
 });
