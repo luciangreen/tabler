@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { funnelStats, parseEvents, sampleFunnel, terminalProgram } from '../lib/funnel.js';
-import { convertFunnelSpec } from '../lib/publish.js';
+import { convertFunnelSpec, keepServing } from '../lib/publish.js';
 import { form, start, text } from './serve-util.mjs';
 
 const PORT = 8097;
@@ -26,6 +26,7 @@ try {
   process.exit(1);
 }
 check(fs.existsSync(path.join(dir, 'funnel_web.pl')), 'vetusiapl2webpl wrote the funnel\'s web server');
+fs.writeFileSync(path.join(dir, 'funnel_web.pl'), keepServing(fs.readFileSync(path.join(dir, 'funnel_web.pl'), 'utf8')));
 
 async function walk(choice, person) {
   const pages = [];

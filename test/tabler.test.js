@@ -5,7 +5,7 @@ import { atom, siteProgram } from '../lib/site.js';
 import { pageHTML, reportData, tableData } from '../lib/preview.js';
 import { fieldVar, funnelStats, parseEvents, previewPages, sampleFunnel, terminalProgram } from '../lib/funnel.js';
 import { PROVIDERS, missing, readSales } from '../lib/payments.js';
-import { convertFunnelSpec, deployPlan, runSiteSpec } from '../lib/publish.js';
+import { convertFunnelSpec, deployPlan, keepServing, runSiteSpec } from '../lib/publish.js';
 
 test('formulas: arithmetic over columns, in order, with bad input caught', () => {
   const cols = [{ name: 'price' }, { name: 'qty' }];
@@ -134,6 +134,10 @@ test('publishing: run here first, then on a server, with commands that are safe 
   assert.deepEqual(runSiteSpec({ file: 'shop.pl', port: 8095 }).args, ['shop.pl', '8095']);
   assert.deepEqual(convertFunnelSpec({ vetusia: 'GitHub/vetusiapl2webpl/', input: 'f.pl', output: 'w.pl', port: 8097 }).args,
     ['-q', '-g', 'main', '-s', 'GitHub/vetusiapl2webpl/src/vetusia_converter.pl', '--', 'f.pl', '-o', 'w.pl', '--port', '8097']);
+  const kept = keepServing(':- initialization(main, main).\nmain :- vetusia_server(8097).\n');
+  assert.match(kept, /^:- initialization\(tabler_keep_serving, main\)\.$/m);
+  assert.match(kept, /tabler_keep_serving :-\n    main,\n    thread_get_message\(_\)\./);
+  assert.equal(keepServing(kept), kept);
   const plan = deployPlan({ host: 'example.com', user: 'lucian', dir: 'sites/shop', files: ['shop.pl'], run: 'shop.pl', port: 8095 });
   assert.equal(plan.url, 'http://example.com:8095/');
   assert.deepEqual(plan.steps.map((s) => s.cmd), ['ssh', 'scp', 'ssh']);
