@@ -58,6 +58,12 @@ try {
   check(yes.at(-1).includes(funnel.paymentLink), 'choosing to buy shows the payment link');
   const no = await walk('2', { Name: 'Ben', Email: 'ben@example.com' });
   check(text(no.at(-1)).includes(funnel.declined.headline), 'saying no thanks shows the declined page');
+  if (failures) {
+    console.log('--- pages served (choosing 1) ---');
+    yes.forEach((h, i) => console.log(`[page ${i}]\n${h.slice(0, 2500)}`));
+    console.log(`--- server log ---\n${server.log()}`);
+    console.log(`--- funnel_web.pl ---\n${fs.readFileSync(path.join(dir, 'funnel_web.pl'), 'utf8')}`);
+  }
 } catch (err) {
   check(false, `${err.message}\n${server.log()}`);
 } finally {

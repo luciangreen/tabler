@@ -145,3 +145,35 @@ test('publishing: run here first, then on a server, with commands that are safe 
   assert.throws(() => deployPlan({ host: 'bad host; rm -rf /', run: 'x.pl' }), /server address/);
   assert.throws(() => deployPlan({ host: 'example.com', dir: '../etc', run: 'x.pl' }), /folder/);
 });
+
+test('the character can build tables, rows, reports and the funnel, and undo it', async () => {
+  const { newTablerDoc, siteOf, funnelOf } = await import('../lib/tablerdoc.js');
+  const { tablerCommands, parseColumns } = await import('../lib/commands.js');
+  const cmds = tablerCommands();
+  let doc = newTablerDoc();
+  const say = async (text) => { const r = await cmds.perform(text, doc, { ctx: { stats: () => null } }); assert.ok(r.matched, `understood "${text}"`); doc = r.doc; return r.say; };
+  assert.deepEqual(parseColumns('name, email and spend (number), age'), [{ name: 'name', type: 'text' }, { name: 'email', type: 'text' }, { name: 'spend', type: 'number' }, { name: 'age', type: 'number' }]);
+  assert.match(await say('add a table called customers with name, email and spend (number)'), /Added the customers table/);
+  assert.match(await say('add a row to customers: name is Ann, email ann@example.com, spend 120'), /Added a row/);
+  await say('add a row to customers: name Ben, email=ben@example.com, spend: 30');
+  assert.deepEqual(siteOf(doc).tables[2].rows, [{ name: 'Ann', email: 'ann@example.com', spend: '120' }, { name: 'Ben', email: 'ben@example.com', spend: '30' }]);
+  assert.match(await say('add a column double = spend * 2 to customers'), /Added double to customers \(spend \* 2\)/);
+  assert.match(await say('add a column bonus = spend * colour to customers'), /"colour" is not a column/);
+  assert.match(await say('make a report of count and sum of spend in customers'), /"Customers": 2 150/);
+  assert.match(await say('make a report of total value in products by category'), /book 3700; course 6100/);
+  assert.match(await say('show products'), /4 rows: Meditation course, Logic book, Music lessons/);
+  assert.match(await say('add a page called About'), /Added the About page/);
+  await say('set the variable contact to me@example.com');
+  assert.equal(siteOf(doc).variables.contact, 'me@example.com');
+  await say('set the headline to Sleep better tonight');
+  await say('set the offer headline to The full sleep course');
+  await say('set the price to $29');
+  assert.match(await say('use PayPal for payments'), /PayPal/);
+  assert.match(await say('set the payment link to javascript:alert(1)'), /https/);
+  await say('I spent $30 on ads');
+  const f = funnelOf(doc);
+  assert.deepEqual([f.landing.headline, f.offer.headline, f.price, f.provider, f.adSpend], ['Sleep better tonight', 'The full sleep course', 29, 'paypal', 30]);
+  assert.match(await say('how is the funnel doing'), /Refresh figures/);
+  await say('undo that');
+  assert.equal(funnelOf(doc).adSpend, 0);
+});
