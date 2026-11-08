@@ -1,0 +1,12 @@
+{
+  "name": "tabler",
+  "version": "0.1.0",
+  "description": "Tabler: Lucian Office database websites served by SWI-Prolog, and funnels through vetusiapl2webpl that track their visits and sales",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check-site": "node scripts/check-site.mjs",
+    "check-funnel": "node scripts/check-funnel.mjs"
+  },
+  "license": "BSD-3-Clause"
+}

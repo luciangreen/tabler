@@ -1,0 +1,42 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: tabler
+      - name: Check out the Lucian Office core beside Tabler, as in lucianos/apps
+        uses: actions/checkout@v4
+        with:
+          repository: luciangreen/lucianoffice
+          path: lucianoffice
+      - name: Check out vetusiapl2webpl (turns funnels into web servers)
+        uses: actions/checkout@v4
+        with:
+          repository: luciangreen/vetusiapl2webpl
+          path: vetusiapl2webpl
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install SWI-Prolog
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes swi-prolog-nox
+      - name: Unit tests
+        working-directory: tabler
+        run: npm test
+      - name: The generated site runs in SWI-Prolog and matches the preview
+        working-directory: tabler
+        run: npm run check-site
+      - name: The funnel runs through vetusiapl2webpl and records visits and sales
+        working-directory: tabler
+        env:
+          VETUSIA_DIR: ${{ github.workspace }}/vetusiapl2webpl
+        run: npm run check-funnel
