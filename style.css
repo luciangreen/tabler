@@ -1,0 +1,37 @@
+body { margin: 0; }
+.tbar { flex-wrap: wrap; gap: 8px; }
+.tbar .title { font: inherit; font-weight: 600; border: 1px solid transparent; background: transparent; padding: 4px 6px; min-width: 8em; }
+.main-tabs { display: flex; gap: 4px; flex-wrap: wrap; padding: 6px 12px 0; border-bottom: 1px solid #8884; }
+.main-tabs button.on { font-weight: 600; border-bottom: 2px solid currentColor; }
+main.tabler { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, 1fr); gap: 12px; padding: 12px; align-items: start; }
+.tabler .panel { margin: 0; min-width: 0; }
+.preview-panel { position: sticky; top: 8px; }
+#preview { width: 100%; height: 70vh; border: 1px solid #8884; border-radius: 6px; background: #fff; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+.row input[type=text], .row input:not([type]) { flex: 1; min-width: 6em; }
+.editor h3 { font-size: .95rem; margin: 14px 0 4px; }
+#editor h3 { font-size: .95rem; margin: 14px 0 4px; }
+#editor label { display: block; margin: 6px 0; font-size: .9em; }
+#editor label > input, #editor label > textarea, #editor label > select { display: block; width: 100%; box-sizing: border-box; font: inherit; margin-top: 2px; }
+#editor textarea { min-height: 4em; }
+.grid { overflow-x: auto; }
+.grid table { border-collapse: collapse; min-width: 100%; }
+.grid th, .grid td { border: 1px solid #8884; padding: 2px; text-align: left; }
+.grid th { background: #eef1f6; padding: 4px 6px; font-weight: 600; }
+.grid td input { width: 100%; min-width: 5em; box-sizing: border-box; border: 0; background: transparent; font: inherit; padding: 3px 4px; }
+.grid td.formula { color: #555; background: #f6f6f2; padding: 3px 6px; }
+.card { border: 1px solid #8884; border-radius: 8px; padding: 6px 10px; margin: 8px 0; }
+.card .row { margin-top: 4px; }
+.card > textarea, .card > input, .card > select { display: block; width: 100%; box-sizing: border-box; font: inherit; margin-top: 6px; }
+.stats td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.log { white-space: pre-wrap; font: .82em ui-monospace, monospace; background: #f4f6fa; border-radius: 6px; padding: 6px 8px; max-height: 14em; overflow: auto; }
+.log:empty { display: none; }
+.note { font-size: .85em; color: #555; }
+.say { margin: 0 12px; }
+#reply { margin: 6px 12px 14px; }
+@media (max-width: 860px) {
+  main.tabler { grid-template-columns: 1fr; padding: 8px; }
+  .preview-panel { position: static; }
+  #preview { height: 55vh; }
+  .tbar h1 { font-size: 1.1rem; }
+}

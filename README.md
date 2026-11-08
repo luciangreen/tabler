@@ -9,6 +9,17 @@ Tabler is the database-website and sales-funnel app of [Lucian Office](https://g
 
 Algorithms do the work; Claude is optional and off by default.
 
+## Using it
+
+- **Pages, Tables, Reports, Variables**: edit the site, with a live preview beside it (stacked on a phone). Formula columns such as `price * stock` are worked out in the preview and in Prolog alike.
+- **Funnel**: the landing page, sign-up fields, offer, thanks page with your payment link (a Stripe Payment Link, PayPal button link or Square checkout link) and the declined page. **Refresh figures** counts visits, sign-ups and choices from `funnel_events.pl`, reads sales from your provider and matches them by email.
+- **Publish**: **Run site** and **Run funnel** start them on this computer (ports 8095 and 8097 by default). Enter a server you reach with ssh to copy them there; **Check (dry run)** shows the commands first.
+- Tell the character things like "add a table called customers with name, email and spend (number)", "add a row to customers: name Ann, email ann@example.com, spend 120", "make a report of total value in products by category", "set the price to $49", "use PayPal for payments" or "how is the funnel doing". "Undo that" takes back its last change.
+
+### Payment keys
+
+Press **Make the keys file** in the Funnel tab. It creates `~/.lucianoffice/payment-keys.json` with empty entries for Stripe (`secretKey`: a restricted key with read access to charges is enough), PayPal (`clientId`, `secret`) and Square (`accessToken`); add `"sandbox": "yes"` for test accounts. Fill it in with iEdit. Tabler only reads it from a job on this computer (`scripts/fetch-sales.mjs`), so the keys never appear in the page or on a command line.
+
 ## Install
 
 From your `lucianos` folder (see the Lucian Office README for everything at once):
@@ -20,6 +31,8 @@ git clone https://github.com/luciangreen/vetusiapl2webpl ../vetusiapl2webpl
 ```
 
 Needs Node 20 and SWI-Prolog (`swipl`).
+
+vetusiapl2webpl needs the fixes in [luciangreen/vetusiapl2webpl#19](https://github.com/luciangreen/vetusiapl2webpl/pull/19) (raw HTML on form pages, the step before the first prompt, typed fields as strings); until it is merged, check out its `fix-web-html-and-inputs` branch.
 
 ## Tests
 

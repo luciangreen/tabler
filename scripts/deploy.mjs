@@ -2,13 +2,12 @@
 // The plan comes on standard input (see lib/publish.js deployPlan); --dry-run prints it only.
 //   echo '{"host":"example.com","user":"me","files":["site.pl"],"run":"site.pl","port":8095}' | node scripts/deploy.mjs --dry-run
 import { spawn } from 'node:child_process';
+import { readRequest } from './request.mjs';
 import { deployPlan } from '../lib/publish.js';
 
-let input = '';
-for await (const chunk of process.stdin) input += chunk;
 const dry = process.argv.includes('--dry-run');
 try {
-  const plan = deployPlan(JSON.parse(input));
+  const plan = deployPlan(await readRequest());
   for (const step of plan.steps) {
     process.stdout.write(`${dry ? 'WOULD RUN' : 'RUN'} ${step.about}: ${step.cmd} ${step.args.map((a) => (/\s/.test(a) ? JSON.stringify(a) : a)).join(' ')}\n`);
     if (dry) continue;
