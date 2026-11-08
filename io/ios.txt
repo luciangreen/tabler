@@ -1,0 +1,402 @@
+Tabler: 200 inputs and outputs, from real runs (npm run ios writes this file; npm test checks it).
+
+1. slugOf("Q&A")
+   => "q_a"
+2. formula("price + stock", {"name":"cat thinks","category":"meditates finds","price":498,"stock":228,"value":244})
+   => 726
+3. runReport({"name":"r","table":"products","where":[{"column":"price","op":">","value":49}],"groupBy":"category","measures":[{"fn":"max","column":"price"}],"sort":{"by":"name","desc":true},"limit":5})
+   => {"header":["category","max of price"],"rows":[["course",120]]}
+4. deployPlan({"host":"shop.example.com","user":"","port":8095,"files":["run.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","2222","run.pl","shop.example.com:lucianoffice-sites/"],"about":"copy 1 file"},{"cmd":"ssh","args":["-p","2222","shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://shop.example.com:8095/"}
+5. missing payment keys("square", {})
+   => ["Access token"]
+6. previewPages("Idea house dog music house a runs teacher.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+7. slugOf("Thank you!")
+   => "thank_you"
+8. formula("price / 0", {"name":"the logic","category":"list","price":433,"stock":119,"value":495})
+   => "NaN"
+9. runReport({"name":"r","table":"products","where":[{"column":"price","op":"=","value":96}],"groupBy":"","measures":[{"fn":"max","column":"value"}],"sort":{"by":"value","desc":false},"limit":2})
+   => {"header":["max of value"],"rows":[[null]]}
+10. deployPlan({"host":"203.0.113.7","user":"","port":8095,"files":["run.pl","data/products.pl","data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","22","run.pl","data/products.pl","data/products.pl","203.0.113.7:lucianoffice-sites/"],"about":"copy 3 files"},{"cmd":"ssh","args":["-p","22","203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+11. missing payment keys("square", {})
+   => ["Access token"]
+12. previewPages("A tree reads teacher runs sells with about writes.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+13. slugOf("100% Free")
+   => "n100_free"
+14. formula("value + price", {"name":"runs","category":"thinks the","price":327,"stock":275,"value":162})
+   => 489
+15. runReport({"name":"r","table":"products","where":[{"column":"price","op":"<","value":68}],"groupBy":"","measures":[{"fn":"count","column":"stock"}],"sort":{"by":"price","desc":true},"limit":8})
+   => {"header":["count"],"rows":[[3]]}
+16. deployPlan({"host":"203.0.113.7","user":"","port":3000,"files":["site.pl","site.pl","site.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","2222","site.pl","site.pl","site.pl","203.0.113.7:lucianoffice-sites/"],"about":"copy 3 files"},{"cmd":"ssh","args":["-p","2222","203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 3000 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 3000"}],"url":"http://203.0.113.7:3000/"}
+17. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+18. previewPages("Logic true blue.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+19. slugOf("100% Free")
+   => "n100_free"
+20. formula("price * 1.1", {"name":"teacher","category":"thinks false","price":156,"stock":455,"value":431})
+   => 171.6
+21. runReport({"name":"r","table":"products","where":[],"groupBy":"category","measures":[{"fn":"sum","column":"price"}],"sort":{"by":"category","desc":false},"limit":10})
+   => {"header":["category","sum of price"],"rows":[["book",34],["course",169]]}
+22. deployPlan({"host":"203.0.113.7","user":"root","port":8095,"files":["data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","root@203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","22","data/products.pl","root@203.0.113.7:lucianoffice-sites/"],"about":"copy 1 file"},{"cmd":"ssh","args":["-p","22","root@203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+23. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+24. previewPages("Runs false about finds buys quickly music about.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+25. slugOf("100% Free")
+   => "n100_free"
+26. formula("value - price / 2", {"name":"number","category":"happy quickly","price":215,"stock":436,"value":325})
+   => 217.5
+27. runReport({"name":"r","table":"products","where":[{"column":"stock","op":">","value":93}],"groupBy":"","measures":[{"fn":"average","column":"stock"}],"sort":{"by":"name","desc":true},"limit":9})
+   => {"header":["average of stock"],"rows":[[200]]}
+28. deployPlan({"host":"203.0.113.7","user":"","port":8095,"files":["site.pl","run.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","2222","site.pl","run.pl","203.0.113.7:lucianoffice-sites/"],"about":"copy 2 files"},{"cmd":"ssh","args":["-p","2222","203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+29. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+30. previewPages("Buys happy about tree.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+31. slugOf("100% Free")
+   => "n100_free"
+32. formula("price * 1.1", {"name":"dog apple","category":"reads tree","price":304,"stock":262,"value":192})
+   => 334.4
+33. runReport({"name":"r","table":"products","where":[{"column":"price","op":">=","value":62}],"groupBy":"","measures":[{"fn":"count","column":"price"}],"sort":{"by":"stock","desc":true},"limit":2})
+   => {"header":["count"],"rows":[[1]]}
+34. deployPlan({"host":"shop.example.com","user":"deploy","port":8095,"files":["site.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","deploy@shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","22","site.pl","deploy@shop.example.com:lucianoffice-sites/"],"about":"copy 1 file"},{"cmd":"ssh","args":["-p","22","deploy@shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://shop.example.com:8095/"}
+35. missing payment keys("square", {})
+   => ["Access token"]
+36. previewPages("Sells cat apple true data happy simple.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+37. slugOf("Café menu")
+   => "caf_menu"
+38. formula("nope + 1", {"name":"writes","category":"tree apple","price":253,"stock":275,"value":343})
+   => {"error":"\"nope\" is not a column"}
+39. runReport({"name":"r","table":"products","where":[{"column":"value","op":">","value":40}],"groupBy":"","measures":[{"fn":"sum","column":"value"}],"sort":{"by":"stock","desc":true},"limit":2})
+   => {"header":["sum of value"],"rows":[[9800]]}
+40. deployPlan({"host":"","user":"root","port":3000,"files":["run.pl","data/products.pl","data/products.pl"],"run":"site.pl","sshPort":2222})
+   => {"error":"enter the server's address"}
+41. missing payment keys("paypal", {})
+   => ["Client ID","Secret"]
+42. previewPages("The value number happy.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+43. slugOf("Café menu")
+   => "caf_menu"
+44. formula("stock * 1.1", {"name":"cat","category":"apple","price":247,"stock":164,"value":489})
+   => 180.4
+45. runReport({"name":"r","table":"products","where":[{"column":"price","op":"=","value":3}],"groupBy":"","measures":[{"fn":"min","column":"price"}],"sort":{"by":"stock","desc":false},"limit":6})
+   => {"header":["min of price"],"rows":[[null]]}
+46. deployPlan({"host":"shop.example.com","user":"deploy","port":8080,"files":["data/products.pl","data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","deploy@shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","22","data/products.pl","data/products.pl","deploy@shop.example.com:lucianoffice-sites/"],"about":"copy 2 files"},{"cmd":"ssh","args":["-p","22","deploy@shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8080 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8080"}],"url":"http://shop.example.com:8080/"}
+47. missing payment keys("square", {})
+   => ["Access token"]
+48. previewPages("False tree cat with.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+49. slugOf("Q&A")
+   => "q_a"
+50. formula("stock - price / 2", {"name":"number house","category":"apple","price":394,"stock":390,"value":110})
+   => 193
+51. runReport({"name":"r","table":"products","where":[],"groupBy":"category","measures":[{"fn":"count","column":"price"}],"sort":{"by":"value","desc":true},"limit":5})
+   => {"header":["category","count"],"rows":[["course",2],["book",2]]}
+52. deployPlan({"host":"","user":"root","port":8080,"files":["run.pl","run.pl","site.pl"],"run":"site.pl","sshPort":22})
+   => {"error":"enter the server's address"}
+53. missing payment keys("square", {})
+   => ["Access token"]
+54. previewPages("Dog list book number list prolog data green data.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+55. slugOf("Sign Up")
+   => "sign_up"
+56. formula("stock - price / 2", {"name":"with","category":"blue","price":154,"stock":405,"value":454})
+   => 328
+57. runReport({"name":"r","table":"products","where":[{"column":"stock","op":"=","value":37}],"groupBy":"","measures":[{"fn":"max","column":"stock"}],"sort":{"by":"price","desc":true},"limit":5})
+   => {"header":["max of stock"],"rows":[[null]]}
+58. deployPlan({"host":"203.0.113.7","user":"deploy","port":8095,"files":["run.pl","run.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","deploy@203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","22","run.pl","run.pl","deploy@203.0.113.7:lucianoffice-sites/"],"about":"copy 2 files"},{"cmd":"ssh","args":["-p","22","deploy@203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+59. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+60. previewPages("Thinks number prolog writes tree.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+61. slugOf("Thank you!")
+   => "thank_you"
+62. formula("value - stock / 2", {"name":"and","category":"the","price":177,"stock":293,"value":490})
+   => 343.5
+63. runReport({"name":"r","table":"products","where":[],"groupBy":"","measures":[{"fn":"average","column":"stock"}],"sort":{"by":"name","desc":false},"limit":7})
+   => {"header":["average of stock"],"rows":[[112.5]]}
+64. deployPlan({"host":"shop.example.com","user":"root","port":8095,"files":["run.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","root@shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","2222","run.pl","root@shop.example.com:lucianoffice-sites/"],"about":"copy 1 file"},{"cmd":"ssh","args":["-p","2222","root@shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://shop.example.com:8095/"}
+65. missing payment keys("square", {})
+   => ["Access token"]
+66. previewPages("And apple logic value happy quickly proof true.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+67. slugOf("  Home page ")
+   => "home_page"
+68. formula("value - value / 2", {"name":"book student","category":"number","price":242,"stock":256,"value":227})
+   => 113.5
+69. runReport({"name":"r","table":"products","where":[],"groupBy":"","measures":[{"fn":"min","column":"price"}],"sort":{"by":"value","desc":false},"limit":4})
+   => {"header":["min of price"],"rows":[[9]]}
+70. deployPlan({"host":"","user":"deploy","port":8080,"files":["data/products.pl","run.pl"],"run":"site.pl","sshPort":2222})
+   => {"error":"enter the server's address"}
+71. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+72. previewPages("The thinks runs buys green with idea quickly.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+73. slugOf("Q&A")
+   => "q_a"
+74. formula("(value + 1) * value", {"name":"dog","category":"writes","price":194,"stock":332,"value":192})
+   => 37056
+75. runReport({"name":"r","table":"products","where":[{"column":"value","op":">=","value":75}],"groupBy":"category","measures":[{"fn":"sum","column":"price"}],"sort":{"by":"price","desc":true},"limit":1})
+   => {"header":["category","sum of price"],"rows":[["course",169]]}
+76. deployPlan({"host":"203.0.113.7","user":"deploy","port":8095,"files":["site.pl","site.pl","run.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","deploy@203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","2222","site.pl","site.pl","run.pl","deploy@203.0.113.7:lucianoffice-sites/"],"about":"copy 3 files"},{"cmd":"ssh","args":["-p","2222","deploy@203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+77. missing payment keys("square", {})
+   => ["Access token"]
+78. previewPages("Prolog number student number green logic.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+79. slugOf("100% Free")
+   => "n100_free"
+80. formula("value / 0", {"name":"false dog","category":"proof finds","price":208,"stock":109,"value":449})
+   => "NaN"
+81. runReport({"name":"r","table":"products","where":[{"column":"price","op":">=","value":63}],"groupBy":"","measures":[{"fn":"count","column":"stock"}],"sort":{"by":"price","desc":true},"limit":3})
+   => {"header":["count"],"rows":[[1]]}
+82. deployPlan({"host":"203.0.113.7","user":"","port":8095,"files":["site.pl","run.pl","site.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","2222","site.pl","run.pl","site.pl","203.0.113.7:lucianoffice-sites/"],"about":"copy 3 files"},{"cmd":"ssh","args":["-p","2222","203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+83. missing payment keys("square", {})
+   => ["Access token"]
+84. previewPages("Data number list.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+85. slugOf("Price (AUD)")
+   => "price_aud"
+86. formula("price / 0", {"name":"buys","category":"thinks teacher","price":477,"stock":437,"value":62})
+   => "NaN"
+87. runReport({"name":"r","table":"products","where":[{"column":"stock","op":"<","value":16}],"groupBy":"name","measures":[{"fn":"average","column":"stock"}],"sort":{"by":"name","desc":false},"limit":4})
+   => {"header":["name","average of stock"],"rows":[["Music lessons",10]]}
+88. deployPlan({"host":"203.0.113.7","user":"deploy","port":8095,"files":["site.pl","run.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","deploy@203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","2222","site.pl","run.pl","deploy@203.0.113.7:lucianoffice-sites/"],"about":"copy 2 files"},{"cmd":"ssh","args":["-p","2222","deploy@203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+89. missing payment keys("square", {})
+   => ["Access token"]
+90. previewPages("Algorithm music false student writes student tree proof.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+91. slugOf("Q&A")
+   => "q_a"
+92. formula("(price + 1) * stock", {"name":"tree","category":"idea person","price":348,"stock":356,"value":29})
+   => 124244
+93. runReport({"name":"r","table":"products","where":[{"column":"stock","op":">=","value":71}],"groupBy":"value","measures":[{"fn":"max","column":"value"}],"sort":{"by":"name","desc":false},"limit":1})
+   => {"header":["value","max of value"],"rows":[[4900,4900]]}
+94. deployPlan({"host":"shop.example.com","user":"root","port":8080,"files":["run.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","root@shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","22","run.pl","root@shop.example.com:lucianoffice-sites/"],"about":"copy 1 file"},{"cmd":"ssh","args":["-p","22","root@shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8080 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8080"}],"url":"http://shop.example.com:8080/"}
+95. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+96. previewPages("Logic list writes the logic buys.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+97. slugOf("100% Free")
+   => "n100_free"
+98. formula("stock + stock", {"name":"house student","category":"reads garden","price":269,"stock":283,"value":297})
+   => 566
+99. runReport({"name":"r","table":"products","where":[{"column":"stock","op":"=","value":34}],"groupBy":"","measures":[{"fn":"max","column":"value"}],"sort":{"by":"stock","desc":false},"limit":8})
+   => {"header":["max of value"],"rows":[[null]]}
+100. deployPlan({"host":"","user":"root","port":3000,"files":["run.pl","run.pl","data/products.pl"],"run":"site.pl","sshPort":2222})
+   => {"error":"enter the server's address"}
+101. missing payment keys("square", {})
+   => ["Access token"]
+102. previewPages("And tree the teacher idea music with dog.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+103. slugOf("Café menu")
+   => "caf_menu"
+104. formula("price + value", {"name":"buys apple","category":"simple blue","price":464,"stock":450,"value":333})
+   => 797
+105. runReport({"name":"r","table":"products","where":[],"groupBy":"value","measures":[{"fn":"average","column":"stock"}],"sort":{"by":"name","desc":false},"limit":2})
+   => {"header":["value","average of stock"],"rows":[[4900,100],[1000,40]]}
+106. deployPlan({"host":"shop.example.com","user":"root","port":8095,"files":["site.pl","site.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","root@shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","22","site.pl","site.pl","root@shop.example.com:lucianoffice-sites/"],"about":"copy 2 files"},{"cmd":"ssh","args":["-p","22","root@shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://shop.example.com:8095/"}
+107. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+108. previewPages("Idea true algorithm cat green.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+109. slugOf("Price (AUD)")
+   => "price_aud"
+110. formula("stock + price", {"name":"prolog","category":"and","price":59,"stock":138,"value":283})
+   => 197
+111. runReport({"name":"r","table":"products","where":[{"column":"price","op":"=","value":36}],"groupBy":"value","measures":[{"fn":"count","column":"price"}],"sort":{"by":"value","desc":true},"limit":2})
+   => {"header":["value","count"],"rows":[]}
+112. deployPlan({"host":"","user":"deploy","port":3000,"files":["data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"error":"enter the server's address"}
+113. missing payment keys("square", {})
+   => ["Access token"]
+114. previewPages("Quickly logic sells apple.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+115. slugOf("Price (AUD)")
+   => "price_aud"
+116. formula("value * 1.1", {"name":"sells","category":"runs meditates","price":495,"stock":346,"value":39})
+   => 42.9
+117. runReport({"name":"r","table":"products","where":[{"column":"stock","op":"<","value":99}],"groupBy":"","measures":[{"fn":"average","column":"value"}],"sort":{"by":"name","desc":true},"limit":9})
+   => {"header":["average of value"],"rows":[[1100]]}
+118. deployPlan({"host":"","user":"root","port":8080,"files":["data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"error":"enter the server's address"}
+119. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+120. previewPages("Runs happy quickly green person house about.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+121. slugOf("Q&A")
+   => "q_a"
+122. formula("value * 1.1", {"name":"teacher sells","category":"simple","price":232,"stock":373,"value":305})
+   => 335.5
+123. runReport({"name":"r","table":"products","where":[],"groupBy":"category","measures":[{"fn":"sum","column":"value"}],"sort":{"by":"stock","desc":true},"limit":9})
+   => {"header":["category","sum of value"],"rows":[["course",6100],["book",3700]]}
+124. deployPlan({"host":"","user":"root","port":3000,"files":["data/products.pl","run.pl","site.pl"],"run":"site.pl","sshPort":2222})
+   => {"error":"enter the server's address"}
+125. missing payment keys("paypal", {})
+   => ["Client ID","Secret"]
+126. previewPages("Book buys apple green thinks teacher meditates writes.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+127. slugOf("  Home page ")
+   => "home_page"
+128. formula("stock - price / 2", {"name":"garden dog","category":"data","price":323,"stock":396,"value":157})
+   => 234.5
+129. runReport({"name":"r","table":"products","where":[{"column":"stock","op":">=","value":65}],"groupBy":"stock","measures":[{"fn":"max","column":"stock"}],"sort":{"by":"value","desc":true},"limit":8})
+   => {"header":["stock","max of stock"],"rows":[[100,100],[300,300]]}
+130. deployPlan({"host":"","user":"deploy","port":3000,"files":["data/products.pl","data/products.pl"],"run":"site.pl","sshPort":2222})
+   => {"error":"enter the server's address"}
+131. missing payment keys("square", {})
+   => ["Access token"]
+132. previewPages("Garden true the garden.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+133. slugOf("Café menu")
+   => "caf_menu"
+134. formula("price / 0", {"name":"proof prolog","category":"value","price":94,"stock":331,"value":49})
+   => "NaN"
+135. runReport({"name":"r","table":"products","where":[],"groupBy":"stock","measures":[{"fn":"average","column":"value"}],"sort":{"by":"category","desc":true},"limit":4})
+   => {"header":["stock","average of value"],"rows":[[100,4900],[40,1000],[10,1200],[300,2700]]}
+136. deployPlan({"host":"","user":"deploy","port":3000,"files":["data/products.pl"],"run":"site.pl","sshPort":2222})
+   => {"error":"enter the server's address"}
+137. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+138. previewPages("Runs writes a prolog.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+139. slugOf("Price (AUD)")
+   => "price_aud"
+140. formula("(stock + 1) * value", {"name":"runs data","category":"and","price":488,"stock":206,"value":455})
+   => 94185
+141. runReport({"name":"r","table":"products","where":[{"column":"price","op":"<","value":47}],"groupBy":"price","measures":[{"fn":"max","column":"value"}],"sort":{"by":"category","desc":true},"limit":8})
+   => {"header":["price","max of value"],"rows":[[25,1000],[9,2700]]}
+142. deployPlan({"host":"203.0.113.7","user":"root","port":3000,"files":["data/products.pl","run.pl","data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","root@203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","22","data/products.pl","run.pl","data/products.pl","root@203.0.113.7:lucianoffice-sites/"],"about":"copy 3 files"},{"cmd":"ssh","args":["-p","22","root@203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 3000 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 3000"}],"url":"http://203.0.113.7:3000/"}
+143. missing payment keys("square", {})
+   => ["Access token"]
+144. previewPages("With music algorithm proof.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+145. slugOf("Price (AUD)")
+   => "price_aud"
+146. formula("value / 0", {"name":"with","category":"sells quickly","price":10,"stock":282,"value":412})
+   => "NaN"
+147. runReport({"name":"r","table":"products","where":[{"column":"price","op":">","value":7}],"groupBy":"","measures":[{"fn":"count","column":"stock"}],"sort":{"by":"price","desc":false},"limit":2})
+   => {"header":["count"],"rows":[[4]]}
+148. deployPlan({"host":"","user":"deploy","port":8080,"files":["run.pl","data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"error":"enter the server's address"}
+149. missing payment keys("paypal", {})
+   => ["Client ID","Secret"]
+150. previewPages("Proof person simple runs simple true list reads.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+151. slugOf("Sign Up")
+   => "sign_up"
+152. formula("(value + 1) * stock", {"name":"person and","category":"false green","price":233,"stock":93,"value":211})
+   => 19716
+153. runReport({"name":"r","table":"products","where":[],"groupBy":"category","measures":[{"fn":"average","column":"value"}],"sort":{"by":"category","desc":false},"limit":7})
+   => {"header":["category","average of value"],"rows":[["book",1850],["course",3050]]}
+154. deployPlan({"host":"203.0.113.7","user":"","port":3000,"files":["data/products.pl","site.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","22","data/products.pl","site.pl","203.0.113.7:lucianoffice-sites/"],"about":"copy 2 files"},{"cmd":"ssh","args":["-p","22","203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 3000 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 3000"}],"url":"http://203.0.113.7:3000/"}
+155. missing payment keys("square", {})
+   => ["Access token"]
+156. previewPages("Finds list reads sells logic with thinks music.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+157. slugOf("Café menu")
+   => "caf_menu"
+158. formula("nope + 1", {"name":"simple","category":"blue","price":387,"stock":69,"value":112})
+   => {"error":"\"nope\" is not a column"}
+159. runReport({"name":"r","table":"products","where":[{"column":"value","op":"<","value":76}],"groupBy":"price","measures":[{"fn":"average","column":"price"}],"sort":{"by":"price","desc":false},"limit":5})
+   => {"header":["price","average of price"],"rows":[]}
+160. deployPlan({"host":"203.0.113.7","user":"root","port":3000,"files":["data/products.pl","data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","root@203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","22","data/products.pl","data/products.pl","root@203.0.113.7:lucianoffice-sites/"],"about":"copy 2 files"},{"cmd":"ssh","args":["-p","22","root@203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 3000 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 3000"}],"url":"http://203.0.113.7:3000/"}
+161. missing payment keys("paypal", {})
+   => ["Client ID","Secret"]
+162. previewPages("Happy reads happy blue teacher dog list runs music.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+163. slugOf("Q&A")
+   => "q_a"
+164. formula("stock - value / 2", {"name":"simple blue","category":"buys apple","price":481,"stock":431,"value":246})
+   => 308
+165. runReport({"name":"r","table":"products","where":[{"column":"value","op":">","value":71}],"groupBy":"","measures":[{"fn":"min","column":"value"}],"sort":{"by":"price","desc":true},"limit":9})
+   => {"header":["min of value"],"rows":[[1000]]}
+166. deployPlan({"host":"","user":"","port":8095,"files":["site.pl"],"run":"site.pl","sshPort":22})
+   => {"error":"enter the server's address"}
+167. missing payment keys("square", {})
+   => ["Access token"]
+168. previewPages("Garden runs the proof logic.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+169. slugOf("100% Free")
+   => "n100_free"
+170. formula("(value + 1) * stock", {"name":"a about","category":"data runs","price":310,"stock":76,"value":451})
+   => 34352
+171. runReport({"name":"r","table":"products","where":[{"column":"value","op":"=","value":74}],"groupBy":"","measures":[{"fn":"min","column":"value"}],"sort":{"by":"stock","desc":false},"limit":10})
+   => {"header":["min of value"],"rows":[[null]]}
+172. deployPlan({"host":"","user":"root","port":8095,"files":["data/products.pl"],"run":"site.pl","sshPort":2222})
+   => {"error":"enter the server's address"}
+173. missing payment keys("paypal", {})
+   => ["Client ID","Secret"]
+174. previewPages("Teacher house tree sells teacher thinks.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+175. slugOf("Café menu")
+   => "caf_menu"
+176. formula("stock / 0", {"name":"simple house","category":"reads false","price":173,"stock":380,"value":12})
+   => "NaN"
+177. runReport({"name":"r","table":"products","where":[{"column":"price","op":"=","value":61}],"groupBy":"stock","measures":[{"fn":"max","column":"price"}],"sort":{"by":"category","desc":true},"limit":5})
+   => {"header":["stock","max of price"],"rows":[]}
+178. deployPlan({"host":"203.0.113.7","user":"deploy","port":8095,"files":["data/products.pl"],"run":"site.pl","sshPort":2222})
+   => {"steps":[{"cmd":"ssh","args":["-p","2222","deploy@203.0.113.7","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on 203.0.113.7"},{"cmd":"scp","args":["-P","2222","data/products.pl","deploy@203.0.113.7:lucianoffice-sites/"],"about":"copy 1 file"},{"cmd":"ssh","args":["-p","2222","deploy@203.0.113.7","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8095 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8095"}],"url":"http://203.0.113.7:8095/"}
+179. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+180. previewPages("House blue finds.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+181. slugOf("Thank you!")
+   => "thank_you"
+182. formula("(value + 1) * stock", {"name":"person writes","category":"the","price":176,"stock":205,"value":76})
+   => 15785
+183. runReport({"name":"r","table":"products","where":[{"column":"price","op":">","value":94}],"groupBy":"","measures":[{"fn":"sum","column":"value"}],"sort":{"by":"price","desc":true},"limit":10})
+   => {"header":["sum of value"],"rows":[[1200]]}
+184. deployPlan({"host":"shop.example.com","user":"","port":8080,"files":["site.pl","run.pl","data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","22","site.pl","run.pl","data/products.pl","shop.example.com:lucianoffice-sites/"],"about":"copy 3 files"},{"cmd":"ssh","args":["-p","22","shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8080 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8080"}],"url":"http://shop.example.com:8080/"}
+185. missing payment keys("paypal", {})
+   => ["Client ID","Secret"]
+186. previewPages("Meditates finds writes.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+187. slugOf("Q&A")
+   => "q_a"
+188. formula("stock * 1.1", {"name":"false reads","category":"house thinks","price":248,"stock":219,"value":88})
+   => 240.9
+189. runReport({"name":"r","table":"products","where":[{"column":"value","op":"<","value":71}],"groupBy":"price","measures":[{"fn":"count","column":"value"}],"sort":{"by":"stock","desc":true},"limit":7})
+   => {"header":["price","count"],"rows":[]}
+190. deployPlan({"host":"shop.example.com","user":"root","port":8080,"files":["data/products.pl"],"run":"site.pl","sshPort":22})
+   => {"steps":[{"cmd":"ssh","args":["-p","22","root@shop.example.com","mkdir -p 'lucianoffice-sites'"],"about":"make the folder lucianoffice-sites on shop.example.com"},{"cmd":"scp","args":["-P","22","data/products.pl","root@shop.example.com:lucianoffice-sites/"],"about":"copy 1 file"},{"cmd":"ssh","args":["-p","22","root@shop.example.com","cd 'lucianoffice-sites' && (pkill -f 'swipl site.pl' || true) && nohup swipl 'site.pl' 8080 > 'site.pl.log' 2>&1 &"],"about":"start site.pl on port 8080"}],"url":"http://shop.example.com:8080/"}
+191. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+192. previewPages("Sells reads prolog.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+193. slugOf("100% Free")
+   => "n100_free"
+194. formula("stock + stock", {"name":"the tree","category":"dog prolog","price":328,"stock":393,"value":203})
+   => 786
+195. runReport({"name":"r","table":"products","where":[],"groupBy":"","measures":[{"fn":"max","column":"stock"}],"sort":{"by":"price","desc":false},"limit":5})
+   => {"header":["max of stock"],"rows":[[300]]}
+196. deployPlan({"host":"","user":"root","port":8095,"files":["site.pl"],"run":"site.pl","sshPort":22})
+   => {"error":"enter the server's address"}
+197. missing payment keys("stripe", {})
+   => ["Secret key (sk_live_… or a restricted key with read access to charges)"]
+198. previewPages("With apple tree value runs.")
+   => [{"title":"Calm in ten minutes a day"},{"title":"Get the whole course"},{"title":"Thank you!"},{"title":"No problem"}]
+199. slugOf("Q&A")
+   => "q_a"
+200. formula("price / 0", {"name":"sells","category":"a writes","price":433,"stock":371,"value":439})
+   => "NaN"
