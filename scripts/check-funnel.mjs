@@ -71,6 +71,8 @@ try {
 }
 const eventsFile = path.join(dir, 'funnel_events.pl');
 const raw = fs.existsSync(eventsFile) ? fs.readFileSync(eventsFile, 'utf8') : '';
+// EVENTS_OUT keeps the records, for the business coach's check (lucianoffice CI)
+if (process.env.EVENTS_OUT) fs.writeFileSync(process.env.EVENTS_OUT, raw);
 console.log(raw.trim());
 const events = parseEvents(raw);
 const kinds = events.map((e) => e.event);
