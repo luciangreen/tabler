@@ -11,7 +11,7 @@ Algorithms do the work; Claude is optional and off by default.
 
 ## Using it
 
-- **Pages, Tables, Reports, Variables**: edit the site, with a live preview beside it (stacked on a phone). Formula columns such as `price * stock` are worked out in the preview and in Prolog alike.
+- **Pages, Tables, Reports, Variables**: edit the site, with a live preview beside it (stacked on a phone). Formula columns such as `price * stock` are worked out in the preview and in Prolog alike, each after the formula columns it uses, wherever they are in the table; formulas that use each other are refused with the columns named.
 - **Funnel**: the landing page, sign-up fields, offer, thanks page with your payment link (a Stripe Payment Link, PayPal button link or Square checkout link) and the declined page. **Refresh figures** counts visits, sign-ups and choices from `funnel_events.pl`, reads sales from your provider and matches them by email.
 - **Publish**: **Run site** and **Run funnel** start them on this computer (ports 8095 and 8097 by default). Enter a server you reach with ssh to copy them there; **Check (dry run)** shows the commands first.
 - Tell the character things like "add a table called customers with name, email and spend (number)", "add a row to customers: name Ann, email ann@example.com, spend 120", "make a report of total value in products by category", "set the price to $49", "use PayPal for payments" or "how is the funnel doing". "Undo that" takes back its last change.
