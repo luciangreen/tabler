@@ -179,3 +179,15 @@ test('the character can build tables, rows, reports and the funnel, and undo it'
   await say('undo that');
   assert.equal(funnelOf(doc).adSpend, 0);
 });
+
+test('a formula can use a later formula column, as on the site', () => {
+  const t = { name: 't', columns: [{ name: 'a', type: 'number' }, { name: 'f', type: 'number', formula: 'g * 2' }, { name: 'g', type: 'number', formula: 'a + 1' }], rows: [{ a: 3 }] };
+  assert.deepEqual(rowsOf(t).map((r) => [r.a, r.f, r.g]), [[3, 8, 4]]);
+  assert.deepEqual(Object.keys(rowsOf(t)[0]), ['_id', 'a', 'f', 'g']);
+});
+
+test('formulas that use each other are refused, in the preview and the site', () => {
+  const t = { name: 't', columns: [{ name: 'a', type: 'number' }, { name: 'f', type: 'number', formula: 'g + a' }, { name: 'g', type: 'number', formula: 'f * 2' }], rows: [{ a: 1 }] };
+  assert.throws(() => rowsOf(t), /f -> g -> f use each other/);
+  assert.throws(() => siteProgram({ name: 's', tables: [t], reports: [], pages: [] }), /use each other/);
+});
